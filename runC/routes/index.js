@@ -28,7 +28,6 @@ router.post('/code', co.wrap(function* (ctx, next) {
   // run C code
   result = yield fileTools.execCFileByFilenameAsync(filename);
   ctx.body = result;
-  console.log(result.stderr);
   return next;
 }));
 

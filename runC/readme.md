@@ -1,6 +1,6 @@
 # runC
 
-+ 要求
++ 要求（2018-01-19）
 
     * 前端显示两个输入框和一个按钮，一个填 C 代码，另一个填程序输
     
@@ -24,3 +24,8 @@
 
     * **./routes/file.js**负责保存文件编译运行等操作，**./routes/index.js**负责设置路由，**./config/default.js**保存了服务器端口和代码文件所在文件夹名
 
++ History
+
+    * 2018-01-19 start task
+    * 2018-01-25 start coding
+    * 2018-01-26 first commit

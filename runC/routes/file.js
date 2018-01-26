@@ -72,14 +72,16 @@ function fileTools() {
     return new Promise(function (resolve, reject) {
       var result = getResult();
       gcc.stderr.on('data', (data) => {
-        result.stderr += data.slice(data.indexOf(':') + 1);
-        console.log(data.toString());
+        result.stderr += data.indexOf(':') == -1 ? data : data.slice(data.indexOf(':') + 1); // remove filename.c
         if (result.success) {
           result.success = false;
         }
       });
       gcc.on('close', (code) => {
         result.success = code === 1 ? false : true;
+        while(result.stderr.indexOf(folderName + path.sep + filename + '.c') != -1) { // remove filename.c
+          result.stderr = result.stderr.replace(folderName + path.sep + filename + '.c:', '');
+        }
         resolve(result);
       });
     });
